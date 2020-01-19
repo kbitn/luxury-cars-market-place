@@ -1,0 +1,152 @@
+.banner {
+  background-size: cover;
+  background-position: center;
+  height: 100vh;
+  text-align: left;
+  padding-top: 20%;
+}
+
+.banner h1 {
+  margin: 0;
+  color: white;
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+  font-size: 60px;
+  font-weight: bold;
+}
+
+.banner p {
+  font-size: 35px;
+  color: white;
+  opacity: .7;
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+}
+
+@import url('https://fonts.googleapis.com/css?family=Bebas+Neue&display=swap');
+
+.search-bar {
+  margin: 0 auto;
+}
+
+
+.cont {
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  text-align: center;
+  z-index: 0;
+  min-height: 70vh;
+  overflow: hidden;
+  padding-bottom: 8rem;
+  padding-top: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  .custom-button {
+    border-radius: 5px !important;
+    box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.5) !important;
+    margin-left: 2% !important;
+  }
+  form {
+  display: flex;
+  height: 50px;
+  border-radius: 0 5px 5px 0;
+  margin: 0 auto;
+  }
+  strong {
+    color: #D4AF37;
+  }
+  #query{
+    border-radius: 5px !important;
+    height: 50px;
+    width: 30em;
+    box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.5);
+  }
+  h1 {
+  text-shadow: 1px 1px 10px rgba(0, 0, 0, 0.3);
+  font-family: 'Bebas Neue', cursive;
+  font-size: 5rem;
+  color: white;
+  margin-bottom: 3%;
+  strong {
+    text-shadow: none;
+  }
+}
+  p {
+  font-family: 'Bebas Neue', cursive;
+  font-size: 3rem;
+  opacity: 0.6;
+  text-shadow: 0px 1px 0px rgba(255, 255, 255, 1);
+  color: white;
+  }
+}
+
+.home-cont {
+  padding: 4% 0;
+  text-align: center;
+}
+@media (max-width: 650px) {
+  .home-cont {
+  padding: 10% 0;
+  }
+}
+
+.pulse {
+  z-index: -1;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  max-width: 30rem;
+
+  circle {
+    fill: white;
+    transform: scale(0);
+    opacity: 0;
+    transform-origin: 50% 50%;
+    animation: pulse 2s cubic-bezier(.5,.5,0,1);
+
+    &:nth-child(2) {
+      fill: black;
+      animation: pulse 2s 0.75s cubic-bezier(.5,.5,0,1);
+    }
+
+    &:nth-child(3) {
+      fill: white;
+      animation: pulse 2s 1.5s cubic-bezier(.5,.5,0,1);
+    }
+
+  }
+
+}
+
+@media (max-width: 740px) {
+.search-bar {
+  display: flex;
+}
+.cont {
+  min-height: 60vh;
+  #query{
+    display: none;
+  }
+h1 {
+  font-size: 4rem;
+}
+
+}
+
+}
+
+@keyframes pulse {
+
+  25% {
+    opacity: 0.4;
+  }
+
+  100% {
+    transform: scale(1);
+  }
+
+}
+
+

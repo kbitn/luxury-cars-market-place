@@ -1,0 +1,71 @@
+<h1 class="text-center pt-4 pb-2">MY CARS</h1>
+<div class="conta d-flex">
+<div class="home-cards ml-1">
+<% @cars.each do |car| %>
+  <div class="home-card">
+    <%= link_to car_path(car) do %>
+    <div class="home-card-img-top rounded home-pho" width="100%" style="background-image: url('<%= image_path car.photo %>')"></div>
+    <% end %>
+  <div class="home-card-body" >
+  <h5 class="m-0"><%= car.brand %> - <%= car.car_model %></h5>
+  <% mycarbookings = Booking.all.select { |book| book.car_id == car.id } %>
+  <% sumacarbook = 0 %>
+  <% mediacarbook = 0 %>
+  <% numreviewcarbook = 0 %>
+  <% mycarbookings.each { |boook| sumacarbook += boook.review.rating if boook.review } %>
+  <% mycarbookings.each { |boook| numreviewcarbook += 1 if boook.review } %>
+  <% numreviewcarbook.zero? ?  mediacarbook = 0 : mediacarbook = (sumacarbook / numreviewcarbook).round %>
+  <p class="home-card-text m-0">
+  <% mediacarbook.times do %>
+   <i class="fas fa-star" style="color: #6FCFE1;"></i>
+   <% end %>
+      <% (5 - mediacarbook).times do  %>
+        <i class="fas fa-star" style="color: rgb(220,220,220)"></i>
+      <% end %><%= numreviewcarbook %> reviews</p>
+    <img src='<%= car.user.photo %>' class="avatar-bordered home-card-avatar">
+  </div>
+  <div class="home-box p-2">
+  <h4><%= car.price_per_hour%>€</h4>
+  <span>PER HOUR</span>
+  </div>
+  </div>
+<% end %>
+</div>
+</div>
+<% if @rentals.length > 0 %>
+<h1 class="text-center pt-4 pb-2">My Rentals</h1>
+<div class="conta d-flex">
+<div class="home-cards ml-1">
+<% @rentals.each do |book| %>
+  <div class="home-card">
+    <%= link_to car_path(book.car) do %>
+    <div class="home-card-img-top rounded home-pho" width="100%" style="background-image: url('<%= image_path book.car.photo %>')"></div>
+    <% end %>
+  <div class="home-card-body" >
+  <h5 class="m-0"><%= book.car.brand %> - <%= book.car.car_model %></h5>
+  <% carbookings = Booking.all.select { |boook| boook.car_id == book.car_id } %>
+  <% sumabook = 0 %>
+  <% mediabook = 0 %>
+  <% numreview = 0 %>
+  <% carbookings.each { |boook| sumabook += boook.review.rating if boook.review } %>
+  <% carbookings.each { |boook| numreview += 1 if boook.review } %>
+  <% numreview.zero? ?  mediabook = 0 : mediabook = (sumabook / numreview).round %>
+  <% mediabook.times do %>
+   <i class="fas fa-star" style="color: #6FCFE1;"></i>
+   <%  end %>
+   <% (5 - mediabook).times do %>
+   <i class="fas fa-star" style="color: rgb(220,220,220);"></i>
+   <%  end %>
+   <%= numreview %> reviews
+    <img src='<%= book.car.user.photo %>' class="avatar-bordered home-card-avatar">
+  </div>
+  <div class="home-box p-2">
+  <h4><%= book.car.price_per_hour%>€</h4>
+  <span>PER HOUR</span>
+  </div>
+   <div class="review-link"><%= link_to "Leave a review",  new_booking_review_path(book.id)%></div>
+  </div>
+<% end %>
+<% end %>
+</div>
+</div>

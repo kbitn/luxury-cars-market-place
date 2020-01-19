@@ -1,0 +1,10 @@
+<%= link_to car_path(car) do %>
+      <div class="info-img p-0" style="background-image: url('<%= image_path car.photo %>')"></div>
+  <div class="text-center txt">
+    <h5 class="m-0"><%= car.brand.upcase %></h5>
+    <p class="m-0"><strong><%= car.car_model.upcase %></strong></p>
+    <div class="price">
+      <p class="m-0"><%= car.price_per_hour %>€ / H</p>
+    </div>
+  </div>
+<% end %>

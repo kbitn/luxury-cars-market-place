@@ -1,0 +1,233 @@
+@import "avatar";
+
+.main-container {
+  background-color: white;
+  box-shadow: 1px 8px 10px rgba(0, 0, 0, 0.05);
+}
+
+.user-container {
+  align-items: center;
+  margin-top: 25px;
+#user {
+  margin: 0px;
+  right: 20px;
+  top: 15px;
+}
+}
+
+.rev {
+  position: relative;
+}
+
+#car_picture {
+  width: 100%;
+  height: 400px;
+  margin-left: 20px;
+  margin-top: 20px;
+  margin-right: 10px;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  border-radius: 5px;
+  box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.1)
+}
+
+.transmission {
+  background-color: rgba(0, 0, 0, 0.05);
+  padding: 6px 12px;
+  border-radius: 22px;
+  width: fit-content;
+  transition: background-color 0.5s ease;
+  &:hover {
+    background-color: white;
+  }
+}
+
+
+.top-info {
+  margin: 0 auto;
+  p {
+    margin-bottom: 0;
+  }
+  h1 {
+    margin-top: 5px;
+  }
+}
+
+.new-box {
+  text-align: center;
+  height: 400px;
+  width: 350px;
+  margin-right: 7em;
+  border-radius: 3px;
+  background: white;
+  box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.07);
+  padding: 20px;
+  padding-top: 45px;
+  position: sticky;
+  top: 8%;
+  .tex {
+    position: relative;
+    bottom: -5%;
+  }
+}
+
+.info-car {
+  width: 1075px;
+  margin-left: 8%;
+  padding-top: 15px;
+  padding-bottom: 25px;
+  margin-bottom: -8%;
+}
+
+[type="date"] {
+  background:#fff url(https://cdn1.iconfinder.com/data/icons/cc_mono_icon_set/blacks/16x16/calendar_2.png)  97% 50% no-repeat ;
+}
+[type="date"]::-webkit-inner-spin-button {
+  display: none;
+}
+[type="date"]::-webkit-calendar-picker-indicator {
+  opacity: 0;
+}
+
+
+.show-cards {
+  margin-top: 9%;
+  .show-card {
+      width: 750px;
+      background: white;
+      margin-left: 18%;
+      margin-top: 2%;
+      padding: 30px;
+      box-shadow: 1px 1px 10px rgb(224, 224, 224);
+      p {
+        opacity: 0.7;
+        line-height: 2em;
+        strong {
+          opacity: 0.4;
+        }
+      }
+      .stars {
+        letter-spacing: -2px;
+        span {
+          letter-spacing: 0.5px;
+        }
+        #text {
+          letter-spacing: 2px;
+        }
+        p {
+          letter-spacing: 0.5px;
+          margin-bottom: 2%;
+          font-weight: bolder;
+          font-size: 15px;
+        }
+      }
+        .re {
+          font-style: italic;
+          margin-bottom: 0px;
+        }
+      h5 {
+        font-size: 16px;
+        opacity: 0.8;
+      }
+      .avatar {
+    width: 48px;
+    margin-top: 10px;
+  }
+  }
+}
+
+
+@media (max-width: 630px) {
+  #car_picture {
+    height: 350px;
+  }
+  .showmap {
+    height: 350px;
+  }
+}
+
+@media (max-width: 580px) {
+    .top-info {
+    flex-direction: column;
+    align-items: center;
+    padding: 10px;
+  }
+  .showmap {
+    margin-right: 0px !important;
+    margin-top: 0px !important;
+    margin-left: 0px !important;
+  }
+  #car_picture {
+    margin-left: 0px;
+    margin-top: 0px;
+    margin-right: 0px;
+    margin-bottom: 10px;
+  }
+}
+
+@media (max-width: 1360px) {
+  .show-cards {
+    .show-card {
+      width: 600px;
+    }
+  }
+}
+@media (max-width: 1170px) {
+  #car_picture {
+  width: 100%;
+  height: 200px;
+}
+.info-car {
+  width: 100%;
+  margin-left: 0;
+  padding-top: 0;
+  padding-bottom: 0;
+  margin-bottom: 0;
+  .infos {
+    padding: 20px;
+  }
+}
+.showmap {
+    height: 200px !important;
+    width: 100% !important;
+    border-radius: 5px;
+  }
+  .show-cards {
+    margin-top: 5%;
+    .show-card {
+      margin: 10px auto;
+      width: 90%;
+
+    }
+  }
+  .the-container {
+    flex-direction: column;
+  }
+  .new-box {
+  width: 90%;
+  margin: 0 auto;
+  display: block;
+   .tex {
+    position: relative;
+    bottom: -5%;
+  }
+}
+}
+/* custom styles */
+body {
+  background-color: #f8f7f8 !important;
+  padding: 0;
+  background: #e5e5e5;
+  font: 13px/1.4 Geneva, 'Lucida Sans', 'Lucida Grande', 'Lucida Sans Unicode', Verdana, sans-serif;
+}
+label {
+  display: block;
+}
+input {
+  border: 1px solid #c4c4c4;
+  border-radius: 5px;
+  background-color: #fff;
+  padding: 3px 5px;
+  width: 190px;
+}

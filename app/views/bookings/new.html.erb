@@ -1,0 +1,57 @@
+<div class="container text-center mt-5 main-cnt">
+  <div class="top-info-cont">
+    <img src='<%= @car.photo %>' class="car-image" alt="">
+  </div>
+  <h1 class="mt-4 mb-4"><%= @car.brand.upcase %> <%= @car.year %></h1>
+  <%= simple_form_for [@car, @booking] do |f| %>
+  <div class="mapcards">
+    <div class="mapcard p-2 mb-3">
+        <div class="text-left">
+        <p class="m-0"><strong>PICK UP ADDRESS</strong></p>
+        <p class="m-0"><%= @car.location %></p>
+        </div>
+    </div>
+    <div class="mapcard p-2 mb-3">
+        <div class="text-left">
+        <p class="m-0"><strong>PLATE NUMBER</strong></p>
+        <p class="m-0"><%= @car.plate_number %></p>
+        </div>
+    </div>
+    <div class="mapcard p-2 mb-3">
+        <div class="text-left">
+        <p class="m-0"><strong>ACCESSORIES</strong></p>
+        <p class="m-0"><%= @car.accessories %></p>
+        </div>
+    </div>
+    <div class="mapcard p-2 mb-3">
+        <div class="text-left">
+        <p class="m-0"><strong>SEATS</strong></p>
+        <p class="m-0"><%= @car.seats %></p>
+        </div>
+    </div>
+    <div class="mapcard p-2 mb-3">
+        <div class="text-left">
+        <p class="m-0"><strong>OWNER</strong></p>
+        <p class="m-0"><%= @car.user.full_name %></p>
+        </div>
+    </div>
+  </div>
+  <div class="text-center m-3">
+    <h3>Pick up location: </h3>
+      <div
+    id="map"
+    class=""
+    style="height: 250px; width: 100%;"
+    data-marker="<%= @marker.to_json %>"
+    data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"></div>
+  </div>
+  <div class="reservations m-3 mt-4">
+    <h5 class="reservation mr-1">Reservation start: <strong><%= @start_time %></strong></h5>
+    <h5 class="reservation ml-1">Reservation end: <strong><%= @end_time %></strong></h5>
+  </div>
+  <h3 class="price">TOTAL: <strong><%= @result %>€</strong></h3>
+  <%= hidden_field_tag 'renting_time', @result / @car.price_per_hour %>
+  <%= f.submit "Book", class: "custom-button w-50 mt-4 mb-3", data: { confirm: "Are you sure?" }%>
+  <% end %>
+</div>
+

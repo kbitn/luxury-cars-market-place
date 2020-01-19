@@ -1,0 +1,54 @@
+<div class="cont" style="background-image: url(<%= asset_path 'Home2.jpg' %>);">
+    <div class="d-flex flex-column align-items-center justify-content-center banner-header">
+      <h1>Rent a <strong>Luxury Car</strong></h1>
+
+      <div class="search-bar">
+        <%= form_tag cars_path, method: :get do %>
+        <%= text_field_tag :query,
+            params[:query],
+            class: "form-control custom",
+            placeholder: "Brand/Model/Transmission/Year"
+         %>
+        <%= submit_tag "BROWSE", class: "custom-button" %>
+        <% end %>
+      </div>
+    </div>
+  <svg class="pulse" viewBox="0 0 1024 1024" version="1.1">
+        <circle id="Oval" cx="512" cy="512" r="512"></circle>
+        <circle id="Oval" cx="512" cy="512" r="512"></circle>
+        <circle id="Oval" cx="512" cy="512" r="512"></circle>
+    </svg>
+</div>
+
+<div class="home-cont">
+    <h2><strong>FEATURED CARS</strong></h2>
+</div>
+
+<div class="home-cards">
+<% @cars.first(3).each do |car| %>
+  <div class="home-card">
+    <%= link_to car_path(car) do %>
+    <div class="home-card-img-top rounded home-pho" width="100%" style="background-image: url('<%= image_path car.photo %>')"></div>
+    <% end %>
+  <div class="home-card-body" >
+  <h5 class="m-0"><%= car.brand %> - <%= car.car_model %></h5>
+  <% suma = 0 %>
+  <% media = 0 %>
+  <% car.reviews.each { |rev| suma += rev.rating } %>
+  <% car.reviews.length.zero? ?  media = 0 : media = (suma / car.reviews.length).round %>
+  <% media.times do %>
+   <i class="fas fa-star" style="color: #6FCFE1;"></i>
+   <% end %>
+   <% (5 - media).times do %>
+   <i class="fas fa-star" style="color: rgb(220,220,220);"></i>
+   <% end %>
+   <%= car.reviews.length %> reviews
+    <img src='<%= car.user.photo %>' class="avatar-bordered home-card-avatar">
+  </div>
+  <div class="home-box p-2">
+  <h4><%= car.price_per_hour%>€</h4>
+  <span>PER HOUR</span>
+  </div>
+  </div>
+<% end %>
+</div>

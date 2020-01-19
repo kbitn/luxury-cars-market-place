@@ -1,0 +1,32 @@
+<div class="container mt-4 mb-4">
+  <div class="text-center">
+    <h2>Enter Car Details</h2>
+  </div>
+    <%= simple_form_for (@car) do |f| %>
+    <div class="box-w mt-3">
+      <div class="form-inputs">
+        <%= f.input :brand, placeholder: "BMW"%>
+        <%= f.input :car_model, placeholder: "7 Series"%>
+        <%= f.input :year, placeholder: "2018"%>
+        <%= f.input :milage, label: "Mileage", placeholder: "30000" %>
+        <%= f.input :seats, placeholder: "4" %>
+        <%= f.input :combustion, placeholder: "Diesel" %>
+        <%= f.input :transmission, placeholder: "Automatic" %>
+        <%= f.input :accessories, placeholder: "Air Conditonning, Anti Lock Braking System, Voice Control..." %>
+        <%= f.input :plate_number, placeholder: "3650GYG" %>
+        <%= f.input :price_per_hour, label: "Price Per Hour (€)", placeholder: "200" %>
+        <%= f.input :description, placeholder: "Description..." %>
+        <%= f.input :location, placeholder: "Your location" %>
+        <%= f.input :photo, placeholder: "URL of photo" %>
+      </div>
+    <div class="submit text-center">
+      <%= f.button :submit, class: "custom-button padding-right-left"%>
+    <% end %>
+    </div>
+    <div class="text-center mt-3">
+      <%= link_to "Go Back", cars_path, class: "custom-button" %>
+    </div>
+  </div>
+</div>
+
+

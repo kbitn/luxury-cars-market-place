@@ -1,0 +1,47 @@
+  <nav class="fill navbar">
+      <%= link_to root_path, class: "navbar-brand" do %>
+    <%= image_tag "http://mrluxuryconnect.com/wp-content/uploads/2016/01/Gold-And-Black-300x169.png" %>
+    <% end %>
+    <ul>
+        <div class="search-bar-nav">
+      <%= form_tag cars_path, method: :get, class: "d-flex" do %>
+      <%= text_field_tag :query,
+          params[:query],
+          class: "form-control custom",
+          placeholder: "Search for a car"
+       %>
+       <%= button_tag(type: 'submit', class: "custom-button w-25") do %>
+          <i class="fas fa-search"></i>
+        <% end %>
+      <% end %>
+  </div>
+    <% if user_signed_in? %>
+      <li class="signedin"><%= link_to "Dashboard", dashboard_path %></li>
+      <li class="signedin"><%= link_to "Cars", cars_path %></li>
+      <li class="signedin"><%= link_to "Rent Your Car", new_car_path %></li>
+      <% if current_user.photo.present? %>
+      <li><%= image_tag current_user.photo, class: "avatar dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+          <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+            <%= link_to "Dashboard", dashboard_path, class: "dropdown-item text-center" %>
+            <%= link_to "Rent Your Car", new_car_path, class: "dropdown-item text-center" %>
+            <%= link_to "Cars", cars_path, class: "dropdown-item text-center" %>
+            <%= link_to "Log out", destroy_user_session_path, method: :delete, class: "dropdown-item text-center" %>
+          </div>
+      </li>
+      <% else %>
+      <li><%= image_tag "https://i.pravatar.cc/300", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+          <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+            <%= link_to "Log out", destroy_user_session_path, method: :delete, class: "dropdown-item text-center" %>
+          </div>
+      </li>
+
+      <% end %>
+    <% else %>
+      <li class="ml-2"><%= link_to "Login", new_user_session_path %></li>
+      <li><%= link_to "Sign Up", new_user_registration_path %></li>
+    <% end %>
+    </ul>
+  </nav>
+
+
+

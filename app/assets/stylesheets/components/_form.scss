@@ -1,0 +1,22 @@
+.box-w {
+  background-color: white;
+  box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.1);
+  padding: 25px;
+  width: 70%;
+  margin: 0 auto;
+}
+.padding-right-left {
+  margin: 15px;
+}
+
+@media (max-width: 768px) {
+  .box-w {
+    width: 80%;
+  }
+}
+@media (max-width: 554px) {
+  .box-w {
+    width: 90%;
+  }
+}
+

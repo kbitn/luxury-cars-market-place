@@ -1,0 +1,64 @@
+.car-image {
+  width: 65%;
+  height: 100%;
+  border: 5px solid gold;
+}
+.top-info-cont {
+  height: 300px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.main-cnt {
+  background-color: white;
+  box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  width: 95%;
+  max-width: 800px;
+  border-radius: 3px;
+}
+
+.reservation {
+  background-color: white;
+  box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.3);
+  width: 50%;
+  padding: 10px;
+  border-radius: 3px;
+}
+
+.reservations {
+  display: flex;
+  justify-content: center;
+}
+
+.mapcard {
+  background-color: rgb(245, 245, 245);
+  border-radius: 5px;
+  width: 100%;
+  max-width: 503px;
+}
+.mapcards {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.bookingmap {
+  width: 100% !important;
+  height: 100% !important;
+}
+
+@media (max-width: 650px) {
+  .top-info-cont {
+    .bookingmap {
+      display: none;
+    }
+    .car-image {
+      width: 100%;
+      height: 90%;
+    }
+  }
+}

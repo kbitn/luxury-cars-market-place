@@ -1,0 +1,116 @@
+  <div class="main-container">
+  <div class="top-info d-flex w-100">
+    <div class="picture" id="car_picture" style="background-image: url('<%= image_path @car.photo %>')"></div>
+      <div
+    id="map"
+    class="showmap"
+    style="width: 100%;
+    height: 400px; margin-right: 20px; margin-top: 20px; margin-left: 10px; border-radius: 5px;"
+    data-marker="<%= @marker.to_json %>"
+    data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"></div>
+  </div>
+
+
+  <div class="info-car">
+      <div class="infos ml-2">
+        <h1><%= @car.brand %> - <%= @car.car_model %>  <% if policy(@car).edit? %><%= link_to raw('<i class="fas fa-trash"></i>'), car_path(@car), method: :delete, data: { confirm: "Are you sure?" } %><% end %></h1>
+        <p><%= @car.year %> |  <%= @car.seats %> seats <% if policy(@car).edit? %><%= link_to "Edit", edit_car_path(@car)%><% end %></p>
+        <% @lamediabook.times do %>
+         <i class="fas fa-star" style="color: #6FCFE1;"></i>
+        <% end %>
+        <% (5 - @lamediabook).times do %>
+         <i class="fas fa-star" style="color: rgb(220, 220, 220);"></i>
+         <% end %>
+         <%= @numreviewbook %> reviews
+        </div>
+      </div>
+    </div>
+    </div>
+<div class="d-flex justify-content-between the-container">
+  <div class="show-cards">
+    <div class="show-card">
+      <h5><strong>OWNER</strong></h5>
+      <div class="d-flex align-items-end">
+        <img src="<%= @car.user.photo %>" alt="" class="avatar cust">
+        <div class="ml-3 reviews d-flex align-items-end">
+          <div class="stars">
+          <p><%= @car.user.full_name %></p>
+          <% @lamediauser.times do %>
+            <i class="fas fa-star" style="color: #6FCFE1;"></i>
+          <% end %>
+          <% (5 - @lamediauser).times do %>
+            <i class="fas fa-star" style="color: rgb(220, 220, 220);"></i>
+          <% end %>
+         <span class="ml-1">  <%= @numreviewuser %> reviews</span>
+           </div>
+          </div>
+       </div>
+    </div>
+
+      <% if @car.description.nil?%>
+      <%=  %>
+      <% else %>
+    <div class="show-card">
+      <h5><strong>CAR DESCRIPTION</strong></h5>
+      <p><%= @car.description %></p>
+    </div>
+      <% end %>
+
+      <% unless @car.owner_conditions.nil? %>
+      <div class="show-card">
+        <h5><strong>OWNER CONDITIONS</strong></h5>
+        <p><%= @car.owner_conditions %></p>
+      </div>
+      <% end %>
+
+      <div class="show-card">
+        <h5 class="mb-4"><strong>TECHNICAL CHARACTERISTICS</strong></h5>
+        <p><i class="fas fa-gas-pump mr-1" style="color: #D4AF37; font-size: 20px;"></i><strong>Combustion</strong>: <%= @car.combustion %>      -    <strong>Transmission</strong>: <%= @car.transmission %></p>
+        <p class="m-0"><i class="fas fa-tachometer-alt mr-1" style="color: #D4AF37; font-size: 20px;"></i><strong>Milage</strong>: <%= @car.milage %>km</p>
+      </div>
+
+      <% if @car.accessories.nil?%>
+      <%=  %>
+      <% else %>
+        <div class="show-card">
+          <h5><strong>OPTIONS AND ACCESORIES</strong></h5>
+          <p><%= @car.accessories %></p>
+        </div>
+      <% end %>
+    <div class="show-card rev">
+      <h4 class="mb-4"><strong>REVIEWS</strong></h4>
+      <% @bookings.each do |book| %>
+        <% unless book.review == nil %>
+        <div class="d-flex justify-content-start align-items-center border-bottom pb-4 mt-3">
+          <img src="<%= book.user.photo %>" alt="" class="avatar cust m-0 mr-3">
+          <div class="user">
+            <h5><%= book.user.full_name %> </h5>
+            <% book.review.rating.times do %>
+              <i class="fas fa-star" style="color: #6FCFE1;"></i>
+            <% end %>
+             <% (5 - book.review.rating).times do %>
+              <i class="fas fa-star" style="color: rgb(220, 220, 220);"></i>
+            <% end %>
+            <p class="m-0"><%= book.review.content %></p>
+            </div>
+          </div>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+  <% if !policy(@car).edit? %>
+      <div class="new-box">
+        <h5 class="mb-2">Dates</h5>
+        <%= simple_form_for :booking, url: car_send_booking_path(@car.id), method: "post" do |f| %>
+          <%= f.input :starts_at, as: :string, required: true, input_html: {class: "datepicker"} %>
+          <%= f.input :ends_at, as: :string, required: true, input_html: {class: "datepicker"} %>
+        <div class="tex">
+          <h1 id="final_price"></h1>
+          <p>Price per hour: <span id="car_price"><%= @car.price_per_hour %>€</span></p>
+        </div>
+        <%= f.button :submit, "Book It", class:"custom-button w-75 mb-3", style:"position: absolute; left: 12%; bottom: 0%" %>
+        <% end %>
+      </div>
+    <% end %>
+</div>
+<!--      -->
